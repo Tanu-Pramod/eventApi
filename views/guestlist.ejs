@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%=titleguest%>
+  </title>
+</head>
+
+<body>
+	<a href="http://localhost:3000/"> Event Form</a> |
+	<a href="http://localhost:3000/list"> Event list</a> |
+    <a href="http://localhost:3000/guestIndex/"> guest form</a> |
+	<a href="http://localhost:3000/guestIndex/guestlist"> guest list</a> |
+  <a href="http://localhost:3000/mailer"> Send Invites</a> |
+	<a href="http://localhost:3000/user/login"> Login</a> |
+	<a href="http://localhost:3000/user/logout"> logout</a>
+  
+  <table border="2">
+    <tr>
+      <th>Guest Name</th>
+      <th>Contact</th>
+      <th>Email</th>
+      <th>Profile</th>
+      <th>Action</th>
+      
+    <tr>
+      <% for(var i=0; i < data.length; i++) { %>
+    <tr>
+      <td>
+        <%= data[i].guest_name %>
+      </td>
+      <td>
+        <%= data[i].contact %>
+      </td>
+      <td>
+        <%= data[i].email %>
+      </td>
+      <td>
+        <% if(data[i].image) { %>
+        <img src="/uploads/<%= data[i].image %>" alt="profile image" width="80">
+        <% } %>
+      </td>
+      <td><a href="details/<%= data[i].id %>">Details |</a><a href="edit/<%= data[i].id %>">Edit</a> 
+         |
+         <a href="delete/<%= data[i].id %>" | onclick="return confirm('Are you sure?')">Delete</a> </td>
+    </tr>
+    <% } %>
+  </table>
+</body>
+
+</html>

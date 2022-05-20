@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    Mailing
+  </title>
+</head>
+    <body>
+      <form action="/mailer/" method="post">
+        <select name="event" id="object_id">
+          <% for(i=0;i<events.length;i++) { %>
+            <option value="<%= events[i]._id %>"> <%= events[i].event_name %>
+            </option>
+            <% } %>
+        </select>  
+        <select name="guest" id="object_id">
+          <% for(i=0;i<guests.length;i++) { %>
+            <option value="<%= guests[i]._id %>"> <%= guests[i].guest_name %>
+            </option>
+            <% } %>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+  </body>
+  </html>

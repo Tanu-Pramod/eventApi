@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%=title%>
+    </title>
+  </head>
+
+  <body>
+    <a href="http://localhost:3000/"> Event Form</a> |
+    <a href="http://localhost:3000/list"> Event list</a> |
+    <a href="http://localhost:3000/guestIndex/"> guest form</a> |
+    <a href="http://localhost:3000/guestIndex/guestlist"> guest list</a> |
+    <a href="http://localhost:3000/mailer"> Send Invites</a> |
+    <a href="http://localhost:3000/user/login"> Login</a> |
+    <a href="http://localhost:3000/user/logout"> logout</a>
+    <table border="2">
+      <tr>
+        <th>EventName</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Venue</th>
+        <th>Action</th>
+      </tr>
+
+      <tr>
+        <% for(var i=0; i < data.length; i++) { %>
+      </tr>
+
+      <tr>
+        <td>
+          <%= data[i].event_name %>
+        </td>
+        <td>
+          <%= data[i].description %>
+        </td>
+        <td>
+          <%= data[i].date %>
+        </td>
+        <td>
+          <%= data[i].venue %>
+        </td>
+        <td>
+          <a href="/details/<%= data[i].id %>">Details</a> |
+          <a href="/edit/<%= data[i].id %>">Edit</a>
+          <a href="/delete/<%= data[i].id %>"
+            onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+        <% for(var j=0; j < data[i].guests.length; j++) { %>
+        <%=data[i].guests[j].guest_name %> <% } %>
+      </tr>
+      <% } %>
+    </table>
+  </body>
+</html>

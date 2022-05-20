@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Login Form</title>
+</head>
+
+<body>
+	<a href="http://localhost:3000/"> Event Form</a> |
+	<a href="http://localhost:3000/list"> Event list</a> |
+    <a href="http://localhost:3000/guestIndex/"> guest form</a> |
+	<a href="http://localhost:3000/guestIndex/guestlist"> guest list</a> |
+	<a href="http://localhost:3000/mailer"> Send Invites</a> |
+	<a href="http://localhost:3000/user/login"> Login</a> |
+	<a href="http://localhost:3000/user/logout"> logout</a>
+	<% if(title==='edit' ){ %>
+		<form action="/edit/<%=id%>" method="post">
+			<% }else{ %>
+				<form action="/" method="post">
+					<% } %>
+						Event Name:<br>
+						<input type="text" name="event_name" placeholder="Event Name" required
+							value="<%-event_name%>"><br><br>
+						Description:<br>
+						<input type="text" name="description" placeholder="Description" required
+							value="<%-description%>"><br><br>
+						Date:<br>
+						<input type="date" name="date" placeholder="Date" required value=<%-olddate%> ><br><br>
+						Venue:<br>
+						<input type="text" name="venue" placeholder="Venue" required value="<%-venue%>"><br><br>
+
+						<input type="submit" value="Submit">
+				</form>
+</body>
+
+</html>

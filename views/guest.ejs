@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title><%=title%></title>
+</head>
+
+<body>
+	<a href="http://localhost:3000/"> Event Form</a> |
+	<a href="http://localhost:3000/list"> Event list</a> |
+    <a href="http://localhost:3000/guestIndex/"> guest form</a> |
+	<a href="http://localhost:3000/guestIndex/guestlist"> guest list</a> |
+	<a href="http://localhost:3000/mailer"> Send Invites</a> |
+	<a href="http://localhost:3000/user/login"> Login</a> |
+	<a href="http://localhost:3000/user/logout"> logout</a>
+	<% if(title==='edit'){ %>
+		<form action="/guestIndex/edit/<%=id%>" method="post" enctype = "multipart/form-data" >
+		<% }else{ %>
+			<form action="/guestIndex/addGuest" method="post" enctype = "multipart/form-data">
+				<% } %>
+					Guest Name:<br>
+					<input type="hidden" name="id" placeholder="Guest Name"
+						value="<%= typeof id!='undefined'?id:'' %>" required>
+					<input type="text" name="guest_name" placeholder="Guest Name"
+						value="<%= typeof guest_name!='undefined'?guest_name:'' %>" required><br><br>
+					Contact:<br>
+					<input type="tel" name="contact" placeholder="Contact"
+						value="<%= typeof contact!='undefined'?contact:'' %>" required><br><br>
+					Email Id:<br>
+					<input type="email" name="email" placeholder="Email ID" 
+						value="<%= typeof email!='undefined'?email:''%>"><br><br>
+					Images:<br>
+					<input type="file" name="image"/><br><br>
+
+					<input type="submit" value="Submit">
+			</form>
+</body>
+
+</html>

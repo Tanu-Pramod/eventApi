@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      eventDetail
+    </title>
+  </head>
+
+  <body>
+    <a href="http://localhost:3000/"> Event Form</a> |
+    <a href="http://localhost:3000/list"> Event list</a> |
+    <a href="http://localhost:3000/guestIndex/"> guest form</a> |
+    <a href="http://localhost:3000/guestIndex/guestlist"> guest list</a> |
+    <a href="http://localhost:3000/mailer"> Send Invites</a> |
+    <a href="http://localhost:3000/eventDetail">EventDetail</a> |
+    <a href="http://localhost:3000/user/login"> Login</a> |
+    <a href="http://localhost:3000/user/logout"> logout</a>
+    <table border="3">
+      <tr>
+        <th>Attending</th>
+        <th>Not Attending</th>
+        <th>Pending</th>
+      </tr>
+      <tr>
+        <td><%= dataAttending %></td>
+        <td><%= notAttending %></td>
+        <td><%= dataPending %></td>
+      </tr>
+    </table>
+
+    <table border="2">
+      <tr>
+        <th>Guest Name</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <% for(var i=0; i < guestData.length; i++) { %>
+      <tr>
+        <td>
+          <%= guestData[i].guest.guest_name %>
+        </td>
+        <td>
+          <%= guestData[i].guest.contact %>
+        </td>
+        <td>
+          <%= guestData[i].guest.email %>
+        </td>
+        <td>
+          <%= guestData[i].isConfirmed %>
+        </td>
+        <td><a href="/delete/guest/<%= id %>/<%= guestData[i].guest._id %>" | onclick="return confirm('Are you sure?')">Delete</a> </td>
+     </tr>
+     <% } %>
+    </table>
+  </body>
+</html>
